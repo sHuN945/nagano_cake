@@ -2,16 +2,18 @@ Rails.application.routes.draw do
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     sessions: "admin/sessions"
   }
-  
+
   devise_for :customers,skip: [:passwords], controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
-  
+
   root to: 'homes#top'
   get '/home/about' => "homes#about", as: :about
+  get '/customers/unsubscribe' => "customers#unsubscribe", as: :unsubscribe
+  get '/customers/withdrawal' => "customers#withdrawal", as: :withdrawal
   resources :items, only: [:show, :index]
-  resources :customers, only: [:show, :edit, :update, :unsubscribe, :withdrawal]
+  resources :customers, only: [:show, :edit, :update, :withdrawal]
   resources :cart_items, only: [:create, :destroy, :destroy_all, :update, :index]
   resources :orders, only: [:show, :edit, :update, :index]
   resources :order_details, only: [:show, :edit, :update, :index]

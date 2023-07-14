@@ -1,0 +1,19 @@
+<h2>本当に退会しますか?</h2>
+
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  
+  <h3>
+    退会すると、会員登録情報や<br />
+    これまでの購入履歴が閲覧できなくなります。<br />
+    退会する場合は「退会する」をクリックしてください。
+  </h3>
+  
+  <div class="actions">
+     <%= link_to '退会しない',customers_path(@customer.id), class: "btn btn-success" %>
+  </div>
+  
+  <div class="actions">
+    <%= link_to '退会する',withdrawal_path, method: :patch, "data-confirm" => "本当に消しますか？", class: "btn btn-sm btn-danger" %>
+  </div>
+  
+<% end %>
