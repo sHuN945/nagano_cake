@@ -1,0 +1,17 @@
+<div class="col-md-8 offset-md-1">
+  <h2>ショッピングカート</h2>
+  <table class="table table-hobver table-inverse">
+    <% @items.each do |item| %>
+      <tr>
+        <td>
+          <%= link_to user_path(book.user.id) do %>
+            <%= image_tag item.get_profile_image(100,100) %>
+          <% end %>
+        </td>
+        <td><%= @item.name %></td>
+        <td><%= @item.price %></td>
+      </tr>
+    <% end %>
+  </table>
+  <%= paginate items %>
+</div>

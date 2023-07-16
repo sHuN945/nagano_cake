@@ -1,0 +1,61 @@
+<div class="col-md-8 offset-md-1">
+  <h2><%= @customer %>さんの会員情報</h2>
+  <table class="table">
+    <tbody>
+      <tr>
+        <td>
+          <h3>
+            会員ID
+            <%= @customer.id %>
+          </h3>
+        </td>
+        <td>
+          <h3>
+            氏名
+            <%= @customer.name %>
+          </h3>
+        </td>
+        <td>
+          <h3>
+            フリガナ
+            <%= @customer.name_kana %>
+          </h3>
+        </td>
+        <td>
+          <h3>
+            郵便番号
+            <%= @customer.postal_code %>
+          </h3>
+        </td>
+        <td>
+          <h3>
+            住所
+            <%= @customer.address %>
+          </h3>
+        </td>
+        <td>
+          <h3>
+            電話番号
+            <%= @customer.telephone_number %>
+          </h3>
+        </td>
+        <td>
+          <h3>
+            メールアドレス
+            <%= @customer.email %>
+          </h3>
+        </td>
+        <td>
+          <h3>
+            会員ステータス
+            <%= @customer.is_deleted %>
+          </h3>
+        </td>
+        <div class="actions">
+          <td><%= link_to '編集する',edit_customer_path(@customer.id), class: "btn btn-success" %></td>
+          <!--<td><%= link_to '注文履歴一覧を見る',edit_book_path(@customer.id), class: "btn btn-success" %></td>-->
+        </div>
+      </tr>
+    </tbody>
+  </table>
+</div>
