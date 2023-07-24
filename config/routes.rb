@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   get '/customers/unsubscribe' => "customers#unsubscribe", as: :unsubscribe
   get '/customers/withdrawal' => "customers#withdrawal", as: :withdrawal
   delete '/cart_items/destroy_all' => "cart_items#destroy_all", as: :destroy_all
+  post '/orders/confirm' => "orders#confirm", as: :confirm
+  get '/orders/completed' => "orders#completed", as: :completed
   resources :items, only: [:show, :index]
   resources :customers, only: [:show, :edit, :update, :withdrawal]
   resources :cart_items, only: [:create, :destroy, :update, :index]
