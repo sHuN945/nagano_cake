@@ -1,10 +1,13 @@
 <div class="col-md-8 offset-md-1">
-  <h2>注文履歴一覧</h2>
+  <h2>
+    <%= link_to admin_customer_path(@customer.id) do %>
+      <%= @customer_firtst_name %><%= @customer_last_name %>さんの注文履歴
+    <% end %>
+  </h2>
   <table class="table table-hobver table-inverse">
     <thead>
       <tr>
         <th>購入日時</th>
-        <th>購入者</th>
         <th>注文個数</th>
       </tr>
     </thead>
@@ -15,7 +18,6 @@
               <%= @item_oreder.datetime %>
             <% end %>
           </td>
-          <td><%= @customer_firtst_name %><%= @customer_last_name %></td>
           <td>
             <%= @item.amount %>
           </td>

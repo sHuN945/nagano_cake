@@ -20,5 +20,11 @@ Rails.application.routes.draw do
   resources :cart_items, only: [:create, :destroy, :update, :index]
   resources :orders, only: [:show, :edit, :update, :index, :new]
   resources :order_details, only: [:show, :edit, :update, :index]
+
+  
+  get '/admin' => "admin_homes#top"
+  resources :admin_items, only: [:edit, :new, :show, :index]
+  resources :admin_customers, only: [:edit, :update, :show, :index]
+  resources :admin_orders, only: [:show]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
