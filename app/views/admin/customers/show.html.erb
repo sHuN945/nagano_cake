@@ -1,5 +1,5 @@
 <div class="col-md-8 offset-md-1">
-  <h2><%= @customer %>さんの会員情報</h2>
+  <h2><%= @customer %>さんの会員詳細</h2>
   <table class="table">
     <tbody>
       <tr>
@@ -12,13 +12,13 @@
         <td>
           <h3>
             氏名
-            <%= @customer.name %>
+            <%= @customer.last_name %><%= @customer.first_name %>
           </h3>
         </td>
         <td>
           <h3>
             フリガナ
-            <%= @customer.name_kana %>
+            <%= @customer.last_name_kana %><%= @customer.first_name_kana %>
           </h3>
         </td>
         <td>
@@ -53,7 +53,7 @@
         </td>
         <div class="actions">
           <td><%= link_to '編集する',edit_customer_path(@customer.id), class: "btn btn-success" %></td>
-          <!--<td><%= link_to '注文履歴一覧を見る',edit_book_path(@customer.id), class: "btn btn-success" %></td>-->
+          <td><%= link_to '注文履歴一覧を見る',admin_path, class: "btn btn-success" %></td>
         </div>
       </tr>
     </tbody>

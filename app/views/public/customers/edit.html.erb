@@ -1,8 +1,8 @@
-<% if @user.errors.any? %>
+<% if @customer.errors.any? %>
   <div id="error_explanation">
-    <h2><%= @user.errors.count %> error prohibited this obj from being saved:</h2>
+    <h2><%= @customer.errors.count %> error prohibited this obj from being saved:</h2>
     <ul>
-      <% @user.errors.full_messages.each do |message| %>
+      <% @customer.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
     </ul>

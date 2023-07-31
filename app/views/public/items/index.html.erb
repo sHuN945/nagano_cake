@@ -1,6 +1,6 @@
 <div class="col-md-8 offset-md-1">
   <h2>商品一覧</h2>
-  <h3>全<%= items.all %>件</h3>
+  <h3>全<%= @items.all %>件</h3>
   <table class="table table-hobver table-inverse">
     <% @items.each do |item| %>
       <tr>
@@ -14,6 +14,6 @@
       </tr>
     <% end %>
   </table>
-  <%= paginate items %>
+  <%= paginate @items %>
 </div>
 
