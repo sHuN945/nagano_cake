@@ -1,5 +1,5 @@
 class CartItem < ApplicationRecord
-  has_many :items, dependent: :destroy
+  belongs_to :item
 
   #    カートアイテムの追加
   def add_item(product_id:, quantity:)

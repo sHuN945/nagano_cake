@@ -13,13 +13,13 @@
     <tbody>
       <% @customers.each do |customer| %>
         <tr>
-          <td><%= @customer.id %></td>
-          <td><%= @customer.name %></td>
-          <td><%= @customer.email %></td>
+          <td></td>
+          <td><%= @customer_last_name %></td>
+          <td><%= @customer_email %></td>
           <td></td>
         </tr>
       <% end %>
     </tbody>
   </table>
-  <%= paginate customers %>
+  <%= paginate @customers %>
 </div>

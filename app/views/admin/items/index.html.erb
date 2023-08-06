@@ -1,5 +1,8 @@
 <div class="col-md-8 offset-md-1">
   <h2>商品一覧</h2>
+  <div class="actions">
+     <%= link_to '新規商品',new_admin_item_path, class: "btn btn-success" %>
+  </div>
   <table class="table table-hobver table-inverse">
     <thead>
       <tr>
@@ -14,9 +17,10 @@
         <tr>
           <td><%= item.id %></td>
           <td><%= item.name %></td>
-          <td><%= price(item.id) %></td>
+          <td><%= item.price %></td>
         </tr>
       <% end %>
     </tbody>
   </table>
+  <%= paginate @items %>
 </div>

@@ -24,10 +24,10 @@ Rails.application.routes.draw do
 
   
   namespace :admin do
-    get '/admin' => "admin_homes#top"
-    resources :admin_items, only: [:edit, :new, :show, :index]
-    resources :admin_customers, only: [:edit, :update, :show, :index]
-    resources :admin_orders, only: [:show]
+    get '/' => "homes#top"
+    resources :items, only: [:edit, :new, :show, :index, :create, :update]
+    resources :customers, only: [:edit, :update, :show, :index]
+    resources :orders, only: [:show]
   end 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
