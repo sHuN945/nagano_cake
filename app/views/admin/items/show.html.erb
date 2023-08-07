@@ -3,7 +3,7 @@
   <table class="table">
     <thead>
       <tr>
-        <th></th>
+        <th>商品イメージ</th>
         <th>商品名</th>
         <th>商品説明</th>
         <th>
@@ -15,10 +15,13 @@
     </thead>
     <tbody>
       <tr>
-        <td></td>
+        <td><%= image_tag @item.image if @item.image.attached? %></td>
         <td><%= @item.name %></td>
         <td><%= @item.introduction %></td>
         <td><%= @item.price %></td>
+      </tr>
+      <tr>
+        <th><%= link_to '編集する',edit_admin_item_path(@item.id), class: "btn btn-success" %></th>
       </tr>
     </tbody>
   </table>

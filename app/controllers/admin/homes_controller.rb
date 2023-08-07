@@ -1,5 +1,7 @@
 class Admin::HomesController < ApplicationController
   def top
-    @admin = admin.all
+    @orders = Order.all
+    @orders = Order.page(params[:page]).per(10)
+    
   end
 end

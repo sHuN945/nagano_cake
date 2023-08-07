@@ -13,10 +13,10 @@
     <tbody>
       <% @customers.each do |customer| %>
         <tr>
-          <td></td>
-          <td><%= @customer_last_name %></td>
-          <td><%= @customer_email %></td>
-          <td></td>
+          <td><% customer.id %></td>
+          <td><%= link_to customer.full_name, admin_customer_path(customer.id) %></td>
+          <td><%= customer.email %></td>
+          <td><%= customer.is_deleted %></td>
         </tr>
       <% end %>
     </tbody>

@@ -8,20 +8,20 @@
         <th>注文個数</th>
       </tr>
     </thead>
-      <% @customer_orders.each do |order| %>
+      <% @orders.each do |order| %>
         <tr>
           <td>
             <%= link_to admin_order_path(item.customer.id) do %>
-              <%= @item_oreder.datetime %>
+              <%= item_oreder.datetime %>
             <% end %>
           </td>
-          <td><%= @customer_firtst_name %><%= @customer_last_name %></td>
+          <td><%= customer_firtst_name %><%= customer_last_name %></td>
           <td>
-            <%= @item.amount %>
+            <%= item.amount %>
           </td>
         </tr>
       <% end %>
     </thead>
   </table>
-  <%= paginate orders %>
+  <%= paginate @orders %>
 </div>

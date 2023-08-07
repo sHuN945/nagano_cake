@@ -1,4 +1,6 @@
 class Admin::ItemsController < ApplicationController
+  before_action :authenticate_admin!
+  before_action :set_item, only: [:show, :edit, :update]
   
   def new
     @item = Item.new
@@ -7,29 +9,32 @@ class Admin::ItemsController < ApplicationController
   
   def create
     @item = Item.new(item_params)
-    @item.save!
-    flash[:notice] = "You have created item successfully."
-    redirect_to admin_item_path(@item)
+    if @item.save
+      flash[:notice] = "You have created item successfully."
+      redirect_to admin_item_path(@item)
+    else
+      render :new
+    end 
   end
   
   def edit
-    @item = Item.find(params[:id])
+    
   end 
   
   def index
+    @customer = current_customer
     @items = Item.all
     @items = Item.page(params[:page]).per(10)
   end 
   
   def show
-    @item = Item.find(params[:id])
+    
   end
   
   def update
-    @item = Item.find(params[:id])
     if @item.update(item_params)
       flash[:notice] = "You have updated item successfully."
-      redirect_to item_path(@item.id)
+      redirect_to admin_item_path(@item)
     else
       render :edit
     end
@@ -39,5 +44,9 @@ class Admin::ItemsController < ApplicationController
 
   def item_params
     params.require(:item).permit(:name, :image, :introduction, :price)
+  end
+  
+  def set_item
+    @item = Item.find(params[:id])
   end
 end

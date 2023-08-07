@@ -8,4 +8,10 @@ class Item < ApplicationRecord
     (price * 1.1).floor
   end
   
+  with_options presence: true do
+   validates :name
+   validates :introduction
+   validates :price
+ end
+  
 end

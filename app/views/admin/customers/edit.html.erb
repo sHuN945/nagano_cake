@@ -1,6 +1,6 @@
-<h2><%= @customer.last_name %><%= @customer.first_name %>さんの会員情報編集</h2>
+<h2><%= @customer.full_name %>さんの会員情報編集</h2>
 
-<%= form_with model: @customer, url: customer_path(@customer.id), method: :patch do |f| %>
+<%= form_with model: @customer, url: admin_customer_path(@customer.id), method: :patch do |f| %>
 
   <h3>
     会員ID
@@ -10,37 +10,37 @@
   <div class="field">
     <%= f.label :名前 %>
     <em>(姓)</em>
-    <%= f.text_field :last_name, autofocus: true, id:"customer_last_name", placeholder:"名前" %>
+    <%= f.text_field :last_name, placeholder:"名前" %>
     <em>(名)</em>
-    <%= f.text_field :first_name, autofocus: true, id:"customer_first_name", placeholder:"名前" %>
+    <%= f.text_field :first_name,  placeholder:"名前" %>
   </div>
   
   <div class="field">
     <%= f.label :フリガナ %>
     <em>(セイ)</em>
-    <%= f.text_field :last_name_kana, autofocus: true, id:"customer_last_name_kana", placeholder:"名前" %>
+    <%= f.text_field :last_name_kana, placeholder:"名前" %>
     <em>(メイ)</em>
-    <%= f.text_field :first_name_kana, autofocus: true, id:"customer_first_name_kana", placeholder:"名前" %>
+    <%= f.text_field :first_name_kana, placeholder:"名前" %>
   </div>
   
   <div class="field">
     <%= f.label :メールアドレス %>
-    <%= f.email_field :email, autofocus: true, id:"customer_email" %>
+    <%= f.email_field :email %>
   </div>
   
   <div class="field">
     <%= f.label :郵便番号 %>
-    <%= f.text_field :postal_code, autofocus: true, id:"customer_postal_code" %>
+    <%= f.text_field :postal_code %>
   </div>
   
   <div class="field">
     <%= f.label :住所 %>
-    <%= f.text_field :address, autofocus: true, id:"customer_address" %>
+    <%= f.text_field :address %>
   </div>
   
   <div class="field">
     <%= f.label :電話番号 %>
-    <%= f.text_field :telephone_number, autofocus: true, id:"customer_telephone_number" %>
+    <%= f.text_field :telephone_number %>
   </div>
   
   <div class="field">
