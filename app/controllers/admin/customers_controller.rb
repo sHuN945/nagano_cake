@@ -4,7 +4,7 @@ class Admin::CustomersController < ApplicationController
   end
   
   def index
-    @customers = Customer.all
+    @customers = Customer.last
     @customers = Customer.page(params[:page]).per(10)
   end
   
@@ -22,10 +22,14 @@ class Admin::CustomersController < ApplicationController
     end
   end
   
-    private
+  private
 
+  def set_customer
+    @customer = Customer.find(params[:id])
+  end
+  
   def customer_params
-    params.require(:customer).permit(:name, :image, :introduction, :price)
+    params.require(:customer).permit(:is_deleted)
   end
   
 end
