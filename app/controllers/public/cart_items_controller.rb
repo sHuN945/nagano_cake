@@ -7,6 +7,7 @@ class Public::CartItemsController < ApplicationController
   end
   
   def create
+    @item = Item.find(cart_item_params[:item_id])
     increase_or_create(params[:cart_item][:item_id])
     redirect_to cart_items_path, notice: 'カートに商品を追加しました。'
   end

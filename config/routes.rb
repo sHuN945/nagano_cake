@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: 'homes#top'
     resources :items, only: [:show, :index]
-    get '/customers/unsubscribe' => "customers#unsubscribe", as: :unsubscribe
+    get 'customers/unsubscribe' => "customers#unsubscribe", as: :unsubscribe
     patch 'customers/withdrawal' => "customers#withdrawal"
     get 'customers', to: 'customers#show'
     get 'customers/edit', to: "customers#edit"
@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     resources :order_details, only: [:show, :edit, :update, :index]
   end 
     get '/home/about' => "homes#about", as: :about
+    
     devise_for :customers,skip: [:passwords], controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions'

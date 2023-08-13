@@ -14,20 +14,20 @@ class Public::CustomersController < ApplicationController
     @customer.update(customer_params)
     if @customer.update(customer_params)
       flash[:notice] = "You have updated customer successfully."
-      redirect_to customer_path
+      redirect_to customers_path
     else
       render :edit
     end
+  end
     
-    def unsubscribe
-      @customer = current_customer
-    end
+  def unsubscribe
+    @customer = current_customer
+  end
 
-    def withdrawal
-      current_customer.update(status: 'withdrawal')
-      reset_session
-      redirect_to root_path, notice: '退会しました。'
-    end
+  def withdrawal
+    current_customer.update(is_deleted: 'true')
+    reset_session
+    redirect_to root_path, notice: '退会しました。'
   end
   
   private
