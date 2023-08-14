@@ -5,7 +5,6 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale">
-    <script src="https://kit.fontawesome.com/6fc63e45e1.js" crossorigin="anonymous"></script>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -17,69 +16,73 @@
           <a class="navber-brand" href="/">
             <span>NaganoCake</span>
           </a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon">三</span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNavDropdown" style>
-            <ul class="navbar-nav ml-auto">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+         </button>
+         <div class="collapse navbar-collapse" id="navbarNavDropdown">
+
+            <ul class="navbar-nav mr-auto">
               <% if customer_signed_in? %>
-                <h3>ようこそ、<%= current_customer.last_name %>さん!</h3>
-                <li>
+                <p class="h4 text-light">ようこそ、<%= current_customer.last_name %>さん!</p>
+                <li class="nav-item">
                   <%= link_to customers_path, class: "nav-link text-light" do %>
                     マイページ
                   <%end %>
                 </li>
-                <li>
+                <li class="nav-item">
                   <%= link_to items_path, class: "nav-link text-light" do %>
                     商品一覧
                   <% end %>
                 </li>
-                <li>
+                <li class="nav-item">
                   <%= link_to cart_items_path, method: :get,class: "nav-link text-light" do %>
                     カート
                   <% end %>
                 </li>
-                <li>
+                <li class="nav-item">
                   <%= link_to destroy_customer_session_path, method: :delete, class: "nav-link text-light" do %>
                     ログアウト
                   <% end %>
                 </li>
               <% elsif admin_signed_in? %>
-                <li>
+                <li class="nav-item">
                   <%= link_to admin_items_path, method: :get, class: "nav-link text-light" do %>
                     商品一覧
                   <% end %>
                 </li>
-                <li>
+                <li class="nav-item">
                   <%= link_to admin_customers_path, method: :get, class: "nav-link text-light" do %>
                     会員一覧
                   <% end %>
                 </li>
-                <li>
+                <li class="nav-item">
                   <%= link_to admin_path, method: :get, class: "nav-link text-light" do %>
                     注文履歴一覧
-                  <% end %> 
-                </li>
-                <li>
-                  <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
-                </li>
-              <% else %>
-                <li>
-                  <%= link_to about_path, class: "nav-link text-light" do %>
-                    About
                   <% end %>
                 </li>
-                <li>
+                <li class="nav-item">
+                  <%= link_to destroy_admin_session_path, method: :delete, class: "nav-link text-light" do %>
+                    ログアウト
+                  <% end %>
+                </li>
+              <% else %>
+                <li class="nav-item">
+                <%= link_to about_path, class: "nav-link text-light" do %>
+                  About
+                  <% end %>
+                </li>
+                <li class="nav-item">
                   <%= link_to items_path, class: "nav-link text-light" do %>
                     商品一覧
                   <% end %>
                 </li>
-                <li>
+                <li class="nav-item">
                   <%= link_to new_customer_registration_path, class: "nav-link text-light" do %>
                     新規登録
                   <% end %>
                 </li>
-                <li>
+                <li class="nav-item">
                   <%= link_to customer_session_path, class: "nav-link text-light" do %>
                     ログイン
                   <% end %>
@@ -89,6 +92,10 @@
           </div>
         </div>
       </nav>
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+
     </header>
   </body>
   <main>
@@ -104,3 +111,5 @@
       </div>
     </footer>
 </html>
+
+

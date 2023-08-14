@@ -18,7 +18,7 @@
         <td><%= image_tag @item.image if @item.image.attached? %></td>
         <td><%= @item.name %></td>
         <td><%= @item.introduction %></td>
-        <td><%= @item.price %></td>
+        <td><%= number_to_currency(@item.price, strip_insignificant_zeros: true) %></td>
       </tr>
       <tr>
         <th><%= link_to '編集する',edit_admin_item_path(@item.id), class: "btn btn-success" %></th>

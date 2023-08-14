@@ -1,0 +1,6 @@
+ja:
+  admin:
+    customer:
+    　is_deleted:
+        true: '退会'
+        false: '有効'
