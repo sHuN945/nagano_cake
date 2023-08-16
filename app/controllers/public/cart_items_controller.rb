@@ -1,6 +1,5 @@
 class Public::CartItemsController < ApplicationController
   before_action :authenticate_customer!
-  before_action :set_cart_item, only: %i[increase decrease destroy]
 
   def index
     @cart_item = CartItem.all
@@ -28,13 +27,14 @@ class Public::CartItemsController < ApplicationController
   end
 
   def destroy
-    @cart_item.destroy
+    cart_item = CartItem.find(params[:id])
+    cart_item.destroy
     redirect_to request.referer, notice: 'カート内商品を削除しました。'
   end
 
   def destroy_all
-    cart_items = CartItem.all
-    cart_items.destroy_all
+    cart_item = CartItem.all
+    cart_item.destroy_all
     flash[:notice] = "本当にカートを空にしますか？"
     redirect_back(fallback_location: root_path, notice: 'カート内商品を空にしました。')
   end

@@ -4,13 +4,13 @@
       <td>
         <%= image_tag @item.image %>
       </td>
-      <td><%= @item.name %></td>
-      <td><%= @item.introduction %></td>
-      <td><%= number_to_currency(@item.price, unit: "¥", strip_insignificant_zeros: true) %></td>
+      <div class="h4 py-2"><%= @item.name %></div>
+      <div class="h5 py-2"><%= @item.introduction %></div>
+      <div class="h5 py-2"><%= @item.with_tax_price %>(税込)</div>
       <%= form_with model: @cart_item, url: '/cart_items', method: :post do |f| %>
         <%= f.select :amount, *[1..10], include_blank: "個数選択" %>
         <%= f.hidden_field :item_id, :value => @item.id %>
-        <%= f.submit 'カートに入れる', class:'btn btn-secondary' %>
+        <%= f.submit 'カートに入れる', class:'btn btn-success' %>
       <% end %>
     </tr>
   </tbody>

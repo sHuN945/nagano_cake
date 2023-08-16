@@ -32,8 +32,8 @@ class Public::SessionsController < Devise::SessionsController
     if @customer.valid_password?(params[:customer][:password]) && @customer.active_for_authentication?
     　　alert_message = if @customer.is_deleted == 'true'
                           '退会済みです。'
+                          redirect_to request.referer
                         end
     end
-    redirect_to request.referer
   end
 end

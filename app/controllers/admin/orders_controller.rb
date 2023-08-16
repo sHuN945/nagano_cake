@@ -1,8 +1,8 @@
 class Admin::OrdersController < ApplicationController
   
 def show
-  @customer = current_customer
-  @item = Item.find(params[:id])
+  @order_details = OrderDetail.where(order_id: params[:id])
+  @order = Order.find(params[:id])
 end 
 
 end
