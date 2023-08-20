@@ -10,87 +10,80 @@
   </head>
 
   <body>
-    <header>
-      <nav class="navbar navber-expand-lg navber-dark bg-dark">
-        <div class="container">
+    <header class="shadow-sm">
+      <nav class="navbar bg-white text-dark">
+        <div class="container text-dark">
           <a class="navber-brand" href="/">
             <span>NaganoCake</span>
           </a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-         </button>
-         <div class="collapse navbar-collapse" id="navbarNavDropdown">
-
-            <ul class="navbar-nav mr-auto">
+            <ul class="nav pull-right nav-pills text-dark">
               <% if customer_signed_in? %>
-                <p class="h4 text-light">ようこそ、<%= current_customer.last_name %>さん!</p>
+                <p class="h6">ようこそ、<%= current_customer.last_name %>さん!</p>
                 <li class="nav-item">
-                  <%= link_to customers_path, class: "nav-link text-light" do %>
+                  <%= link_to customers_path, class: "nav-link text-dark" do %>
                     マイページ
                   <%end %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to items_path, class: "nav-link text-light" do %>
+                  <%= link_to items_path, class: "nav-link text-dark" do %>
                     商品一覧
                   <% end %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to cart_items_path, method: :get,class: "nav-link text-light" do %>
+                  <%= link_to cart_items_path, method: :get,class: "nav-link text-dark" do %>
                     カート
                   <% end %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to destroy_customer_session_path, method: :delete, class: "nav-link text-light" do %>
+                  <%= link_to destroy_customer_session_path, method: :delete, class: "nav-link text-dark" do %>
                     ログアウト
                   <% end %>
                 </li>
               <% elsif admin_signed_in? %>
                 <li class="nav-item">
-                  <%= link_to admin_items_path, method: :get, class: "nav-link text-light" do %>
+                  <%= link_to admin_items_path, method: :get, class: "nav-link text-dark" do %>
                     商品一覧
                   <% end %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to admin_customers_path, method: :get, class: "nav-link text-light" do %>
+                  <%= link_to admin_customers_path, method: :get, class: "nav-link text-dark" do %>
                     会員一覧
                   <% end %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to admin_path, method: :get, class: "nav-link text-light" do %>
+                  <%= link_to admin_path, method: :get, class: "nav-link text-dark" do %>
                     注文履歴一覧
                   <% end %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to destroy_admin_session_path, method: :delete, class: "nav-link text-light" do %>
+                  <%= link_to destroy_admin_session_path, method: :delete, class: "nav-link text-dark" do %>
                     ログアウト
                   <% end %>
                 </li>
               <% else %>
                 <li class="nav-item">
-                <%= link_to about_path, class: "nav-link text-light" do %>
+                <%= link_to about_path, class: "nav-link text-dark" do %>
                   About
                   <% end %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to items_path, class: "nav-link text-light" do %>
+                  <%= link_to items_path, class: "nav-link text-dark" do %>
                     商品一覧
                   <% end %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to new_customer_registration_path, class: "nav-link text-light" do %>
+                  <%= link_to new_customer_registration_path, class: "nav-link text-dark" do %>
                     新規登録
                   <% end %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to customer_session_path, class: "nav-link text-light" do %>
+                  <%= link_to customer_session_path, class: "nav-link text-dark" do %>
                     ログイン
                   <% end %>
                 </li>
               <% end %>
             </ul>
           </div>
-        </div>
       </nav>
       <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>

@@ -1,63 +1,62 @@
 <div class="col-md-8 offset-md-1">
-  <h2>
-    注文履歴詳細
-  </h2>
-    <table class="table table-hobver table-inverse">
-      <tr>
-        <th>購入者
-          <td>
-            <%= link_to admin_customer_path(@order) do %>
-              <%= @order.customer.last_name %><%= @order.customer.first_name %>
-            <% end %>
-          </td>
-        </th>
-      </tr>
-      <tr>
-        <th>注文日</th>
-        <td><%= l @order.created_at %></td>
-      </tr>
-      <tr>
-        <th>配送先</th>
-        <td>
-          <%= @order.postal_code%><%= @order.address %><br />
-          <%= @order.name %>
-        </td>
-      </tr>
-      <tr>
-        <th>支払方法</th>
-        <td><%= @order.payment_method_i18n%></td>
-      </tr>
-    </table>
-  <table>
-    <thead>
-      <tr>
-        <th>商品名</th>
-        <th>単価(税込)</th>
-        <th>数量</th>
-        <th>小計</th>
-      </tr>
-    </thead>
-    <% @order_details.each do |order_detail| %>
-      <% @sum = 0 %>
-      <% @sum += order_detail.item.with_tax_price %>
-      <%= form_with model: order_detail , url: admin_order_path(order_detail.id) , method: :get , local: true do |f| %>
-        <tbody>
-          <tr>
-            <td><%= order_detail.item.name %></td>
-          　<td><%= order_detail.item.with_tax_price %></td>
-          　<td><%= order_detail.item.quantity %></td>
-          　<td><%= order_detail.item.subtota %></td>
-      <% end %>
-            <td>商品合計</td>
-            <td><%= @sum %>円</td>
-
-            <td>送料</td>
-            <td>800円</td>
-
-            <td>請求金額合計</td>
-            <td><%= @sum + 800 %>円</td>
-          </tr>
-        </tbody>
-      <% end %>
+  <h2>注文履歴詳細</h2>
+  <table class="table table-hobver table-inverse">
+    <tr>
+      <th>購入者</th>
+      <td>
+        <%= link_to admin_customer_path(@order) do %>
+          <%= @order.customer.last_name %><%= @order.customer.first_name %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <th>注文日</th>
+      <td><%= l @order.created_at %></td>
+    </tr>
+    <tr>
+      <th>配送先</th>
+      <td>
+        〒<%= @order.postal_code%><%= @order.address %><br />
+        <%= @order.name %>
+      </td>
+    </tr>
+    <tr>
+      <th>支払方法</th>
+      <td><%= @order.payment_method_i18n%></td>
+    </tr>
   </table>
+  <thead>
+    <tr>
+      <th>商品名</th>
+      <th>単価(税込)</th>
+      <th>数量</th>
+      <th>小計</th>
+    </tr>
+  </thead>
+  <% @order_details.each do |order_detail| %>
+    <tbody>
+      <%= form_with model: order_detail , url: admin_order_path(order_detail.id) , method: :get , local: true do |f| %>
+        <tr>
+          <td><%= order_detail.item.name %></td>
+        　<td><%= order_detail.item.with_tax_price %></td>
+        　<td><%= order_detail.quantity %></td>
+        　<td><%= ((order_detail.price * order_detail.quantity*1.1).floor).to_s(:delimited) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  <% end %>
+    <div class="py-4">
+          <tr>
+            <th>商品合計</th>
+            <td><%= (@order.total_payment - @order.postage).to_s(:delimited)%>円</td><br />
+          </tr>
+          <tr>
+            <th>送料</th>
+            <td><%= @order.postage %>円</td><br />
+          </tr>
+          <tr>
+            <th>請求金額合計</th>
+            <th><%= @order.total_payment %>円</th>
+          </tr>
+        </div>
 </div>

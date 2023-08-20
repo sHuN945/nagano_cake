@@ -7,6 +7,10 @@ ja:
       payment_method:
         credit_card: "クレジットカード"
         transfer: "銀行振込"
+    customer:
+      is_deleted:
+        true: "退会"
+        false: "有効"
   activerecord:
     errors:
       messages:
